@@ -50,24 +50,27 @@ function initMap() {
 	
 		//create marker for each castle
 	for (let i=0; i<castles.length; i+=1) {
-		var castle = castles[i]
-		marker = new google.maps.Marker({
+		let castle = castles[i]
+		let marker = new google.maps.Marker({   // let is the magic word here - don't understand it fully, but because it only had block scope, the event listener below works for each iteration, and doesn't just take the final i value
 		position: {lat: castle.pos[0], lng: castle.pos[1]},
 		map: map,
 		icon: image
 		
 	  });
 		// create html for marker info
-		var contentString = `<div><h3 class="heading">${castle.name}</h3>` +
+		let contentString = `<div><h3 class="heading">${castle.name}</h3>` +
 	`<h4>${castle.county}</h4>` + 
 	`<img src='images/thumbs/${castle.img}'>` +
-	`<h4 class="sub">Built: ${castle.built}</h4></div>`
-		// create info window
-		var infowindow = new google.maps.InfoWindow({
+	`<h4 class="sub">Built: ${castle.built}</h4>` +
+	`<h4 class="sub">Status: ${castle.status}</h4>` +
+	`<h4 class="sub">Postcode: ${castle.postcode}</h4></div>`
+		// create info window - - use of let VITAL, see above
+		let infowindow = new google.maps.InfoWindow({
 			content: contentString
 	})
-		
+		console.log(marker)
 		marker.addListener('click', function () {
+			infowindow.close()
 			infowindow.open(map, marker)
 			console.log("hello")
 	  });
@@ -85,4 +88,7 @@ function initMap() {
 
 
 // have media query at medium size to place map on left, with info box on right?
+
+// when entered postcode, center map and display closest five castle on the side/bottom?
   
+// this type of app has real marketable value - think seeds or plant search, where you can choose your type, and find all nearby stockists
