@@ -1,0 +1,83 @@
+/*==== Map Styling ====*/
+
+#map {
+	margin: auto;
+	height: 450px;
+	width: 350px;
+}
+
+
+/*==== Main Styles ====*/
+
+.container {
+	margin: auto;
+	margin-bottom: 2em;
+	width: 200px;
+}
+
+input,
+button {
+	height: 1.5em;
+	border-radius: 3px;
+}
+
+input {
+	width: 140px;
+}
+
+h1,
+h2 {
+	font-family: Poppins;
+	text-align: center;
+	
+}
+
+h1 {
+	font-size: 2em;
+	margin-bottom: 0;
+}
+
+h2 {
+	font-size: 1em;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+
+/*==== Media Queries ====*/ 
+
+@media (min-width: 550px) {
+	
+	#map {
+		height: 600px;
+		width: 450px;
+	}
+	
+
+	h1 {
+		font-size: 2.75em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}	
+
+}
+
+@media (min-width: 850px) {
+	
+	#map {
+		height: 700px;
+		width: 650px;
+	}
+	
+
+	h1 {
+		font-size: 3em;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}	
+
+}
