@@ -45,9 +45,9 @@ var castles = [
 	{name: 'Kendal Castle', pos: [54.32492, -2.73644], built: '12th century', county: 'Cumbria'},
 	{name: 'Muncaster Castle', pos: [54.3547, -3.3809], built: '13th century', county: 'Cumbria'},
 	{name: 'Naworth Castle', pos: [54.955556, -2.688889], built: '13th century', county: 'Cumbria'},
-	// {name: 'Pendragon Castle', pos: [54.41747, -2.33898], built: '12th century', county: 'Cumbria'},
-	// {name: 'Penrith Castle', pos: [54.6621, -2.7573], built: '15th century', county: 'Cumbria'},
-	// {name: 'Wray Castle', pos: [54.400278, -2.964167], built: 'c. 1840', county: 'Cumbria'},
+	{name: 'Pendragon Castle', pos: [54.41747, -2.33898], built: '12th century', county: 'Cumbria'},
+	{name: 'Penrith Castle', pos: [54.6621, -2.7573], built: '15th century', county: 'Cumbria'},
+	{name: 'Wray Castle', img: 'wray.jpg', pos: [54.400278, -2.964167], built: 'c. 1840', county: 'Cumbria'},
 	
 	
 ];

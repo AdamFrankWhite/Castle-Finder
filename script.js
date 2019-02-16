@@ -26,35 +26,54 @@ function getPostcode() {
 
 
 function initMap() {
-	num1 = 53.3933;
-	num2  =-2.1266;
 	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: num1, lng: num2},
+		center: {lat: 53.3933, lng: -2.1266},
 		zoom: 7,
 		mapTypeControlOptions: {
 			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
 		},
-		styles: [
-			{stylers: [
-				{hue:"#00ff6f"},
-				{saturation: -50}
-			]}
-		]
+			styles: [
+				{stylers: [
+					{hue:"#00ff6f"},
+					{saturation: -50}
+				]}
+			]
 		
 	})
 	
 	
 	
 	
+	
+	
 	var image = 'images/icon.png';
+	
+		//create marker for each castle
 	for (let i=0; i<castles.length; i+=1) {
 		var castle = castles[i]
-		var castleMarker = new google.maps.Marker({
+		marker = new google.maps.Marker({
 		position: {lat: castle.pos[0], lng: castle.pos[1]},
 		map: map,
 		icon: image
+		
+	  });
+		// create html for marker info
+		var contentString = `<div><h3 class="heading">${castle.name}</h3>` +
+	`<h4>${castle.county}</h4>` + 
+	`<img src='images/thumbs/${castle.img}'>` +
+	`<h4 class="sub">Built: ${castle.built}</h4></div>`
+		// create info window
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+	})
+		
+		marker.addListener('click', function () {
+			infowindow.open(map, marker)
+			console.log("hello")
 	  });
 	}
+	
+	
 	
 }
 
