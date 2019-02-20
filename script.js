@@ -2,26 +2,51 @@
 
 // Map Function
 var button = document.querySelector('button');
+var container = document.querySelector('.container')
+var errorMessage = document.getElementById('error')
 
 button.onclick = function () {
 	getPostcode()
 }
 
+
 function getPostcode() {
 	postcode = document.getElementById('postcode').value;
 	pcode = "https://api.postcodes.io/postcodes/" + postcode
+
+	if (postcode === "") {
+		$('#error').slideToggle();
+		errorMessage.style.visibility = 'visible';
+		$('#error').delay(3000).slideUp();
+	} else {
+	
+	
 
 	let request = new XMLHttpRequest();
 	request.open('GET', pcode)
 	request.onload = function () {
 		var results = JSON.parse(request.responseText)
-		latitude = results.result.latitude;
-		longitude = results.result.longitude;	
-		updateMap(latitude,longitude) //updates map position to postcode
+		if (request.status === 200) {
+			latitude = results.result.latitude;
+			longitude = results.result.longitude;	
+			updateMap(latitude,longitude) //updates map position to postcode
+			errorMessage.style.visibility = 'hidden';
+		} else if (request.status === 404){
+			
+			errorMessage.style.visibility = 'visible';
+			errorMessage.textContent = `${postcode} is not a valid UK postcode. Please try again.`
+			
+			
+		} else {
+				
+			errorMessage.style.visibility = 'visible';
+			errorMessage.textContent = 'Error. Please try again.'
+		
+		}
 	}
 	
 	request.send();
-	
+	}
 	
 }		
 
@@ -68,7 +93,8 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 	`<img src='images/thumbs/${castle.img}'>` +
 	`<h4 class="sub">Built: <p>${castle.built}</p></h4>` +
 	`<h4 class="sub">Status: <p>${castle.status}</p></h4>` +
-	`<h4 class="sub">Postcode: <p>${castle.postcode}</p></h4></div>`
+	`<h4 class="sub">Postcode: <p>${castle.postcode}</p></h4></div>` +
+	`<span class="moreInfo">more info &#62; &#62;</span>`
 		// create info window - - use of let VITAL, see above
 		let infowindow = new google.maps.InfoWindow({
 			content: contentString
@@ -79,6 +105,8 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 			infowindow.open(map, marker)
 			console.log("hello")
 	  });
+	  
+		
 	}
 	
 	
@@ -95,6 +123,7 @@ function updateMap(longitude, latitude) {
 
 // or change or to something else useful, like local wildlife spots, nature things, see tourist websites something that isn't on googlemaps easily
 
+// add postcode validation, add if statement to whether castle has website
 
 // have media query at medium size to place map on left, with info box on right?
 
@@ -103,4 +132,3 @@ function updateMap(longitude, latitude) {
 // when entered postcode, center map and display closest five castle on the side/bottom?
   
 // this type of app has real marketable value - think seeds or plant search, where you can choose your type, and find all nearby stockists
-

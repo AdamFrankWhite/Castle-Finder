@@ -1,9 +1,13 @@
+* {
+	box-sizing: border-box;
+}
+
 /*==== Map Styling ====*/
 
 #map {
 	margin: auto;
-	height: 450px;
-	width: 350px;
+	height: 350px;
+	width: 300px;
 }
 
 
@@ -11,8 +15,9 @@
 
 .container {
 	margin: auto;
-	margin-bottom: 2em;
-	width: 200px;
+	margin-bottom: 1em;
+	width: 220px;
+	overflow: hidden;
 }
 
 img {
@@ -20,22 +25,54 @@ img {
 	border-radius: 5px;
 }
 
-h4 {
-	font-style: italic;
+p {
+	display: inline;
+	font-weight: normal;
+	font-size: 0.7em;
 }
 
 input,
 button {
-	height: 1.5em;
-	border-radius: 3px;
+	height: 1.75em;
+	display: inline-block;
 }
 
 input {
 	width: 140px;
+	float: left;
 }
 
+input:focus{
+	border: green solid 3px;
+}
+
+button {
+	float: right;
+	width: 80px;
+}
+.moreInfo {
+	color: blue;
+	font-weight: bold;
+}
+
+.moreInfo:hover {
+	cursor: pointer;
+	color: orange;
+	text-decoration: underline;
+}
+
+.error {
+	display: block;
+	background: red;
+	visibility: hidden;
+	padding: 3px;
+	border-radius: 3px;
+	margin-top: 2.25em;
+	clear: both;
+}
 h1,
-h2 {
+h2,
+.error {
 	font-family: Poppins;
 	text-align: center;
 	
@@ -52,6 +89,22 @@ h2 {
 	margin-bottom: 1em;
 }
 
+h3 {
+	font-size: 1.5em; 
+	text-style: none;
+}
+
+.icon {
+	display: inline;
+	padding-left: 4px;
+	width: 14px;
+	height: 14px;
+}
+
+a:hover {
+	color: orange;
+	border-bottom: 2px orange solid;
+}
 
 /*==== Media Queries ====*/ 
 
