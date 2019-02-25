@@ -10,6 +10,37 @@
 	width: 300px;
 }
 
+.marker-window {
+	width: 100px;
+	height: fit-content;
+}
+
+.marker-window h3 {
+	font-size: 0.9em;
+	margin-top: 0.3em;
+	margin-bottom: 0.4em;
+}
+
+.marker-window img {
+	width: 80px;
+	height: auto;
+}
+
+.marker-window h4 {
+	font-size: 0.7em;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+
+.marker-window .sub_county,
+.marker-window .sub_post {
+	display: none;
+}
+
+.gm-style-iw {
+	height: 300px;
+}
 
 /*==== Main Styles ====*/
 
@@ -28,7 +59,7 @@ img {
 p {
 	display: inline;
 	font-weight: normal;
-	font-size: 0.7em;
+	font-size: 1em;
 }
 
 input,
@@ -50,16 +81,7 @@ button {
 	float: right;
 	width: 80px;
 }
-.moreInfo {
-	color: blue;
-	font-weight: bold;
-}
 
-.moreInfo:hover {
-	cursor: pointer;
-	color: orange;
-	text-decoration: underline;
-}
 
 .error {
 	display: block;
@@ -115,6 +137,10 @@ a:hover {
 		width: 450px;
 	}
 	
+	.marker-window .sub_county,
+	.marker-window .sub_post {
+		display: block; /*show extra details */
+	}
 
 	h1 {
 		font-size: 2.75em;

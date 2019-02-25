@@ -88,13 +88,14 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 		// create html for marker info
 		let contentString = 
 	
-	`<div><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` +
-	`<h4><i>${castle.county}</i></h4>` + 
+	`<div class="marker-window"><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` + 
+	// div class for media queries
+	`<h4 class="sub_county"><i>${castle.county}</i></h4>` + 
 	`<img src='images/thumbs/${castle.img}'>` +
-	`<h4 class="sub">Built: <p>${castle.built}</p></h4>` +
-	`<h4 class="sub">Status: <p>${castle.status}</p></h4>` +
-	`<h4 class="sub">Postcode: <p>${castle.postcode}</p></h4></div>` +
-	`<span class="moreInfo">more info &#62; &#62;</span>`
+	`<h4 class="sub_built">Built: <p>${castle.built}</p></h4>` +
+	`<h4 class="sub_status">Status: <p>${castle.status}</p></h4>` +
+	`<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>` +
+	`<h4 class="more-info"><a target="_blank" href="${castle.website}">Visit Website</a></h4></div>` //bug fixed - last h4 element was outside of div, so correct ss declaration not applied
 		// create info window - - use of let VITAL, see above
 		let infowindow = new google.maps.InfoWindow({
 			content: contentString
