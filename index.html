@@ -2,6 +2,7 @@
 <html lang="en">
 
 	<head>
+		<link href="reset.css" rel="stylesheet">
 		<link href="styles.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,15 +11,32 @@
 	</head>
 	
 	<body>
-		<h1>British Castle Locator</h1>
-		<h2>Enter Your Postcode Below</h2>
-		<div class="container">
-			<input id="postcode" type="text" placeholder="postcode">
-			<button>Show</button>
+		<header>
+			<nav class="nav-bar">
+				<img src="images/logo.png" id="logo">
+				<h1>British Castle Locator</h1>
+				<ul>
+					<a href="about.html"><li>About</li></a>
+					<a href="contact.html"><li>Contact</li></a>
+				</ul>
+			</nav>
+		</header>
+		<div class="wrapper">
+			<div class="menu">
+				<h2>Enter a location to find nearby castles</h2>
+				<div class="container">
+					<input id="search" type="text">
+					<button>Search</button>
+				</div>
+			</div>
 		</div>
 		<div id="map"></div>
 		<script src="castles.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR_us6ba5bbPZwZwyBeNsoGAtALhoT13o&callback=initMap"
+		<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR_us6ba5bbPZwZwyBeNsoGAtALhoT13o&callback=initMap&libraries=places"
     async defer></script>
 		<script src="script.js"></script>
 	</body>

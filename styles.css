@@ -13,7 +13,9 @@
 .marker-window {
 	width: 100px;
 	height: fit-content;
+	
 }
+
 
 .marker-window h3 {
 	font-size: 0.9em;
@@ -21,8 +23,12 @@
 	margin-bottom: 0.4em;
 }
 
+.marker-window p {
+	font-style: italic;
+}
+
 .marker-window img {
-	width: 80px;
+	width: 95px;
 	height: auto;
 }
 
@@ -34,21 +40,73 @@
 
 
 .marker-window .sub_county,
+.marker-window .sub_status,
 .marker-window .sub_post {
 	display: none;
+	
 }
 
-.gm-style-iw {
-	height: 300px;
-}
 
 /*==== Main Styles ====*/
+
+body {
+	font-family: Poppins;
+}
+
+.nav-bar {
+	position: absolute;
+	width: 100%;
+	background-color: lightgreen;
+	color: darkgreen;
+	height: 95px;
+	box-shadow: 0px 1px 1px gray;
+}
+
+
+ul {
+	display: inline;
+	text-align: center;
+	font-size: 0.75em;
+}
+
+li {
+	float: left;
+	padding-left: 0.4em;
+}
+
+.wrapper {
+	padding-top: 140px;
+	
+}
+
+.menu {
+	width: 300px;
+	font-size: 0.85em;
+	margin: auto;
+	border: lightblue 4px solid;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 40px;
+}
 
 .container {
 	margin: auto;
 	margin-bottom: 1em;
 	width: 220px;
 	overflow: hidden;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:orange; 
+     text-decoration:none; 
+     cursor:pointer;  
 }
 
 img {
@@ -92,17 +150,32 @@ button {
 	margin-top: 2.25em;
 	clear: both;
 }
-h1,
+
+#logo {
+	float: left;
+	padding: 20px 30px;
+	display: inline-block;
+	width: 115px;
+	height: auto;
+}
+
 h2,
 .error {
-	font-family: Poppins;
 	text-align: center;
 	
 }
 
+.heading {
+	font-weight: bold;
+	color: blue;
+	padding-bottom: .5em;
+}
+
 h1 {
-	font-size: 2em;
-	margin-bottom: 0;
+	display: block;
+	vertical-align: center;
+	font-size: 1.5em;
+	color: darkgreen;
 }
 
 h2 {
@@ -132,18 +205,72 @@ a:hover {
 
 @media (min-width: 550px) {
 	
+	.nav-bar {
+		line-height: 95px;
+	}
+	
+	#map .icon {
+		width: 70px;
+		height: auto;
+	}
+	
 	#map {
 		height: 600px;
 		width: 450px;
 	}
 	
+	
 	.marker-window .sub_county,
 	.marker-window .sub_post {
 		display: block; /*show extra details */
 	}
+	
+	.marker-window {
+		width: 300px;
+		height: fit-content;
+	
+	}
+
+	.marker-window h3 {
+		font-size: 1.5em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+
+	.marker-window img {
+		width: 210px;
+		height: auto;
+	}
+
+	.marker-window h4 {
+		font-size: 0.7em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+	
+	.menu {
+		width: 400px;
+	}
+	
+	ul {
+		display: inline-block;
+		float: right;
+		padding-right: 1em;
+	}
+
+	li {
+		float: right;
+		padding: 0 1.5em;
+	}
+
+	li:hover{
+		background: darkgreen;
+		color: white;
+	}
 
 	h1 {
-		font-size: 2.75em;
+		font-size: 1.5em;
+		display: inline-block;
 	}
 
 	h2 {
@@ -161,11 +288,16 @@ a:hover {
 	
 
 	h1 {
-		font-size: 3em;
+		font-size: 2em;
+		text-align: left;
 	}
 
 	h2 {
 		font-size: 1.5em;
-	}	
+	}
+
+	.menu {
+		width: 550px;
+	}
 
 }
