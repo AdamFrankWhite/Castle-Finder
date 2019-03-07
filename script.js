@@ -6,47 +6,20 @@ var container = document.querySelector('.container')
 var errorMessage = document.getElementById('error')
 
 button.onclick = function () {
-	getPostcode()
+	getSearch()
 }
 
 
-function getPostcode() {
-	postcode = document.getElementById('postcode').value;
-	pcode = "https://api.postcodes.io/postcodes/" + postcode
+function getSearch() {
+	let searchInput = document.getElementById('search').value;
+	
+	var request = {
+		query: searchInput,
+		fields: ['name', 'geometry']
+	};
+	return request
+	console.log(request);
 
-	if (postcode === "") {
-		$('#error').slideToggle();
-		errorMessage.style.visibility = 'visible';
-		$('#error').delay(3000).slideUp();
-	} else {
-	
-	
-
-	let request = new XMLHttpRequest();
-	request.open('GET', pcode)
-	request.onload = function () {
-		var results = JSON.parse(request.responseText)
-		if (request.status === 200) {
-			latitude = results.result.latitude;
-			longitude = results.result.longitude;	
-			updateMap(latitude,longitude) //updates map position to postcode
-			errorMessage.style.visibility = 'hidden';
-		} else if (request.status === 404){
-			
-			errorMessage.style.visibility = 'visible';
-			errorMessage.textContent = `${postcode} is not a valid UK postcode. Please try again.`
-			
-			
-		} else {
-				
-			errorMessage.style.visibility = 'visible';
-			errorMessage.textContent = 'Error. Please try again.'
-		
-		}
-	}
-	
-	request.send();
-	}
 	
 }		
 
@@ -69,12 +42,24 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 		
 	})
 	
+	var service = new google.maps.places.PlacesService(map);
+
+	service.findPlaceFromQuery(getSearch(), function(results, status) {
+		if (status === google.maps.places.PlacesServiceStatus.OK) {
+			for (var i = 0; i < results.length; i++) {
+				createMarker(results[i]);
+      }
+      map.setCenter(results[0].geometry.location);
+    }
+  });
 	
 	
 	
 	
-	
-	var image = 'images/icon.png';
+	var image = {
+		url: 'images/icon.png',
+		size: new google.maps.Size(70, 70)
+	}
 	
 		//create marker for each castle
 	for (let i=0; i<castles.length; i+=1) {
@@ -90,12 +75,11 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 	
 	`<div class="marker-window"><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` + 
 	// div class for media queries
-	`<h4 class="sub_county"><i>${castle.county}</i></h4>` + 
+	`<h4 class="sub_county">${castle.county}</h4>` + 
 	`<img src='images/thumbs/${castle.img}'>` +
 	`<h4 class="sub_built">Built: <p>${castle.built}</p></h4>` +
 	`<h4 class="sub_status">Status: <p>${castle.status}</p></h4>` +
-	`<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>` +
-	`<h4 class="more-info"><a target="_blank" href="${castle.website}">Visit Website</a></h4></div>` //bug fixed - last h4 element was outside of div, so correct ss declaration not applied
+	`<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>`
 		// create info window - - use of let VITAL, see above
 		let infowindow = new google.maps.InfoWindow({
 			content: contentString
@@ -118,6 +102,9 @@ function updateMap(longitude, latitude) {
 	initMap(longitude, latitude, 9) // updates zoom
 }
 
+//scrap postcodes, use googles place api, 
+
+//make tabs, search by city, search by postcode, search by castle, with autocomplete
 
 // append to dom card for each shelter within x 5miles, chosen from drop dwon menubar
 // need to add all shelters to list - 
