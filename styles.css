@@ -52,6 +52,12 @@
 
 /*==== Main Styles ====*/
 
+#logo {
+	
+	width: 40px;
+	height: auto;
+}
+
 body {
 	font-family: Poppins;
 }
@@ -64,6 +70,7 @@ body {
 	height: 95px;
 	box-shadow: 0px 1px 1px gray;
 }
+
 
 
 ul {
@@ -144,7 +151,7 @@ button {
 }
 
 
-.error {
+#error {
 	display: block;
 	background: red;
 	visibility: hidden;
@@ -154,16 +161,10 @@ button {
 	clear: both;
 }
 
-#logo {
-	float: left;
-	padding: 20px 30px;
-	display: inline-block;
-	width: 115px;
-	height: auto;
-}
+
 
 h2,
-.error {
+#error {
 	text-align: center;
 	
 }
@@ -175,6 +176,7 @@ h2,
 
 h1 {
 	display: block;
+	text-align: center;
 	vertical-align: center;
 	font-size: 1.5em;
 	color: darkgreen;
@@ -204,10 +206,53 @@ a:hover {
 
 /*==== Media Queries ====*/ 
 
-@media (min-width: 550px) {
+@media (max-width: 599px) {
+	.nav-bar {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-around;
+	}
 	
+	.nav-bar h1 {
+		order: 1;
+	}
+	
+	.nav-bar #logo {
+		order: 0;
+		width: 30px;
+	}
+	
+	.nav-bar ul {
+		order: 2;
+	}
+	
+	li {
+		padding: 0.5em;
+	}
+
+
+}
+
+@media (min-width: 600px) {
+
+	footer {
+		width: 100%;
+		background-color: darkgreen;
+		height: 100px;
+		margin-top: 75px;
+	}
+
 	.nav-bar {
 		line-height: 95px;
+	}
+	
+	#logo {
+		float: left;
+		padding: 20px 30px;
+		display: inline-block;
+		width: 115px;
+		height: auto;
 	}
 	
 	#map .icon {
@@ -269,6 +314,7 @@ a:hover {
 	li {
 		float: right;
 		padding: 0 1.5em;
+		font-size: 1.25em;
 	}
 
 	li:hover{
@@ -335,7 +381,9 @@ a:hover {
 	}
 	
 
-	
+	li {
+		font-size: 1.5em;
+	}
 
 	h1 {
 		font-size: 2em;

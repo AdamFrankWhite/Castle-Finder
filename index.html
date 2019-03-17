@@ -21,16 +21,23 @@
 				</ul>
 			</nav>
 		</header>
-		<div class="wrapper">
-			<div class="menu">
-				<h2>Enter a location to find nearby castles</h2>
-				<div class="container">
-					<input id="search" type="text">
-					<button>Search</button>
+		<main>
+			<div class="wrapper">
+				<div class="menu">
+					<h2>Enter a postcode to find nearby castles</h2>
+					<div class="container">
+						<input id="postcode" type="text">
+						<button>Search</button>
+						<p id="error">Please enter a valid UK postcode</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div id="map"></div>
+			<div id="map"></div>
+		</main>
+		
+		<footer>
+			<p>This is a footer</p>
+		</footer>
 		<script src="castles.js"></script>
 		<script
   src="https://code.jquery.com/jquery-3.3.1.js"
