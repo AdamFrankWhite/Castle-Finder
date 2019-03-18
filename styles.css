@@ -222,7 +222,7 @@ h2,
 
 /*==== Media Queries ====*/ 
 
-@media (max-width: 599px) {
+@media (max-width: 720px) {
 	.nav-bar {
 		display: flex;
 		flex-direction: column;
@@ -230,27 +230,31 @@ h2,
 		justify-content: space-around;
 	}
 	
-	.nav-bar h1 {
-		order: 1;
-	}
-	
 	.nav-bar #logo {
 		order: 0;
 		width: 30px;
 	}
 	
+	.nav-bar h1 {
+		order: 1;
+		padding-bottom: 0.25em;
+	}
+		
 	.nav-bar ul {
 		order: 2;
+		padding-top: 0.5em;
+		padding-bottom: 1em;
+		border-top: 1px solid darkgreen;
 	}
 	
-	/* li { */
-		/* padding: 0.5em 0.75em; */
-	/* } */
+	li:nth-of-type(1) {
+		padding-left: 0.4em;
+	}
 
 
 }
 
-@media (min-width: 600px) {
+@media (min-width: 721px) {
 
 	footer {
 		width: 100%;
