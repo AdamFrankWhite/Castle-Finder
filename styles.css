@@ -11,7 +11,7 @@
 }
 
 .marker-window {
-	width: 100px;
+	width: 150px;
 	height: fit-content;
 	
 }
@@ -266,7 +266,10 @@ h2,
 }
 
 @media (min-width: 721px) {
-
+	.nav-bar ul {
+		border: none;
+	}
+	
 	footer {
 		display: block;
 		width: 100%;
