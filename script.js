@@ -80,35 +80,43 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 	}
 	
 		//create marker for each castle
-	for (let i=0; i<castles.length; i+=1) {
+	for (var i=0; i<castles.length; i+=1) {
 		let castle = castles[i]
+    
+    // create html for marker info
+		let contentString = 
+	
+      `<div class="marker-window"><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` +
+	// div class for media queries
+        `<h4 class="sub_county"><i>${castle.county}</i></h4>` + 
+        `<img src='images/thumbs/${castle.img}'>` +
+        `<h4 class="sub_built">Built: <p>${castle.built}</p></h4>` +
+        `<h4 class="sub_status">Status: <p>${castle.status}</p></h4>` +
+        `<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>` +
+        `<h4 class="more-info"><a target="_blank" href="${castle.website}">Visit Website</a></h4></div>` 
+        
+    
 		let marker = new google.maps.Marker({   // let is the magic word here - don't understand it fully, but because it only had block scope, the event listener below works for each iteration, and doesn't just take the final i value
 		position: {lat: castle.pos[0], lng: castle.pos[1]},
 		map: map,
-		icon: image
+		icon: image,
+    content: contentString
 		
 	  });
-		// create html for marker info
-		let contentString = 
-	
-	`<div class="marker-window"><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` + 
-	// div class for media queries
-	`<h4 class="sub_county"><i>${castle.county}</i></h4>` + 
-	`<img src='images/thumbs/${castle.img}'>` +
-	`<h4 class="sub_built">Built: <p>${castle.built}</p></h4>` +
-	`<h4 class="sub_status">Status: <p>${castle.status}</p></h4>` +
-	`<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>` +
-	`<h4 class="more-info"><a target="_blank" href="${castle.website}">Visit Website</a></h4></div>` //bug fixed - last h4 element was outside of div, so correct ss declaration not applied
-		// create info window - - use of let VITAL, see above
-		let infowindow = new google.maps.InfoWindow({
+		
+    // create info window - - use of var VITAL here, to ensure only one infowindow open at a time    
+		var infowindow = new google.maps.InfoWindow({
 			content: contentString
 	})
 		
-		marker.addListener('click', function () {
-			infowindow.close()
-			infowindow.open(map, marker)
-			console.log("hello")
-	  });
+    
+    google.maps.event.addListener(marker, 'click', function(){
+      infowindow.setContent(this.content); 
+      infowindow.open(map,this);})
+        
+    
+    
+		
 	  
 		
 	}
