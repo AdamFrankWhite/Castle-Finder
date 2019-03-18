@@ -100,7 +100,7 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 		position: {lat: castle.pos[0], lng: castle.pos[1]},
 		map: map,
 		icon: image,
-    content: contentString
+    content: contentString, 
 		
 	  });
 		

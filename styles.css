@@ -11,16 +11,17 @@
 }
 
 .marker-window {
-	width: 180px;
-	height: 280px;
+	width: 160px;
+	height: fit-content;
+	height: 250px;
+	height: fit-content;
 	
 }
 
-
 .marker-window h3 {
-	font-size: 0.9em;
-	margin-top: 0.3em;
-	margin-bottom: 0.4em;
+	font-size: 1.1em;
+	margin-top: 0.4em;
+	margin-bottom: 0.5em;
 }
 
 .marker-window p {
@@ -28,14 +29,14 @@
 }
 
 .marker-window img {
-	width: 95px;
+	width: 140px;
 	height: auto;
 }
 
 .marker-window h4 {
-	font-size: 0.7em;
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
+	font-size: 0.9em;
+	margin-top: 0.7em;
+	margin-bottom: 0.7em;
 }
 
 .marker-window a {
@@ -269,7 +270,7 @@ h2,
 	.nav-bar ul {
 		border: none;
 	}
-	
+
 	footer {
 		display: block;
 		width: 100%;
