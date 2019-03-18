@@ -38,6 +38,11 @@
 	margin-bottom: 0.5em;
 }
 
+.marker-window a {
+	color: blue;
+}
+
+
 
 .marker-window .sub_county,
 .marker-window .sub_status,
@@ -52,60 +57,20 @@
 
 /*==== Main Styles ====*/
 
-#logo {
-	
-	width: 40px;
-	height: auto;
-}
-
 body {
 	font-family: Poppins;
 }
 
-.nav-bar {
-	position: absolute;
-	width: 100%;
-	background-color: lightgreen;
-	color: darkgreen;
-	height: 95px;
-	box-shadow: 0px 1px 1px gray;
-}
-
-
-
 ul {
-	display: inline;
+	float: right;
 	text-align: center;
 	font-size: 0.75em;
 }
 
 li {
 	float: left;
-	padding-left: 0.4em;
+	padding-right: 0.4em;
 }
-
-.wrapper {
-	padding-top: 140px;
-	
-}
-
-.menu {
-	width: 300px;
-	font-size: 0.85em;
-	margin: auto;
-	border: lightblue 4px solid;
-	border-radius: 10px;
-	padding: 10px;
-	margin-bottom: 40px;
-}
-
-.container {
-	margin: auto;
-	margin-bottom: 1em;
-	width: 220px;
-	overflow: hidden;
-}
-
 
 a {
     color: inherit;
@@ -128,6 +93,8 @@ p {
 	display: inline;
 	font-weight: normal;
 	font-size: 1em;
+	line-height: 1.75em;
+	text-align: center;
 }
 
 input,
@@ -150,30 +117,6 @@ button {
 	width: 80px;
 }
 
-
-#error {
-	display: block;
-	background: red;
-	visibility: hidden;
-	padding: 3px;
-	border-radius: 3px;
-	margin-top: 2.25em;
-	clear: both;
-}
-
-
-
-h2,
-#error {
-	text-align: center;
-	
-}
-
-.marker-window .heading {
-	font-weight: bold;
-	color: blue;
-}
-
 h1 {
 	display: block;
 	text-align: center;
@@ -192,6 +135,83 @@ h3 {
 	font-size: 1.5em; 
 }
 
+.marker-window a:hover {
+	color: orange;
+	text-decoration: underline;
+}
+
+#about h1 {
+	margin-bottom: 0.7em;
+}
+
+
+
+#logo {
+	
+	width: 40px;
+	height: auto;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+#error {
+	display: block;
+	background: red;
+	visibility: hidden;
+	padding: 3px;
+	border-radius: 3px;
+	margin-top: 2.25em;
+	clear: both;
+}
+
+#about {
+	width: 70%;
+	margin: auto;
+	padding-top: 140px;
+}
+
+.nav-bar {
+	position: absolute;
+	width: 100%;
+	background-color: lightgreen;
+	color: darkgreen;
+	height: 95px;
+	box-shadow: 0px 1px 1px gray;
+}
+
+
+.wrapper {
+	padding-top: 140px;
+}
+
+.menu {
+	width: 300px;
+	font-size: 0.85em;
+	margin: auto;
+	border: lightblue 4px solid;
+	border-radius: 10px;
+	padding: 10px;
+	margin-bottom: 40px;
+}
+
+.container {
+	margin: auto;
+	margin-bottom: 1em;
+	width: 220px;
+	overflow: hidden;
+}
+
+h2,
+#error {
+	text-align: center;
+	
+}
+
+.marker-window .heading {
+	font-weight: bold;
+	color: blue;
+}
+
 .icon {
 	display: inline;
 	padding-left: 4px;
@@ -199,10 +219,6 @@ h3 {
 	height: 14px;
 }
 
-a:hover {
-	color: orange;
-	border-bottom: 2px orange solid;
-}
 
 /*==== Media Queries ====*/ 
 
@@ -227,9 +243,9 @@ a:hover {
 		order: 2;
 	}
 	
-	li {
-		padding: 0.5em;
-	}
+	/* li { */
+		/* padding: 0.5em 0.75em; */
+	/* } */
 
 
 }
@@ -312,7 +328,7 @@ a:hover {
 	}
 
 	li {
-		float: right;
+		float: left;
 		padding: 0 1.5em;
 		font-size: 1.25em;
 	}
