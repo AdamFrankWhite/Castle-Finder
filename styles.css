@@ -10,12 +10,9 @@
 	width: 300px;
 }
 
-.marker-window {
-	width: 160px;
-	height: fit-content;
-	height: 250px;
-	height: fit-content;
-	
+img {
+	height: 100px;
+	border-radius: 5px;
 }
 
 .marker-window h3 {
@@ -43,7 +40,17 @@
 	color: blue;
 }
 
+.marker-window a:hover {
+	color: orange;
+	text-decoration: underline;
+}
 
+.marker-window {
+	width: 160px;
+	height: fit-content;
+	height: 250px;
+	height: fit-content;	
+}
 
 .marker-window .sub_county,
 .marker-window .sub_status,
@@ -62,6 +69,16 @@ body {
 	font-family: Poppins;
 }
 
+/* Nav-bar */
+
+#logo {
+	
+	width: 40px;
+	height: auto;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
 ul {
 	float: right;
 	text-align: center;
@@ -69,7 +86,7 @@ ul {
 }
 
 li {
-	display: inline-block; /* fixes bug where menu displays vertical on initial page load (but no refresh) - probably block issue */
+	display: inline-block; 
 	float: left;
 	padding-right: 0.4em;
 }
@@ -86,9 +103,30 @@ a:hover
      cursor:pointer;  
 }
 
-img {
-	height: 100px;
-	border-radius: 5px;
+/* Headings */
+
+h1 {
+	display: block;
+	text-align: center;
+	vertical-align: center;
+	font-size: 1.5em;
+	color: darkgreen;
+}
+
+h2 {
+	font-size: 1em;
+	margin-top: 0;
+	margin-bottom: 1em;
+}
+
+h2,
+#error {
+	text-align: center;
+	
+}
+
+h3 {
+	font-size: 1.5em; 
 }
 
 p {
@@ -98,6 +136,8 @@ p {
 	line-height: 1.75em;
 	text-align: center;
 }
+
+/* Menu */
 
 input,
 button {
@@ -119,47 +159,6 @@ button {
 	width: 80px;
 }
 
-h1 {
-	display: block;
-	text-align: center;
-	vertical-align: center;
-	font-size: 1.5em;
-	color: darkgreen;
-}
-
-h2 {
-	font-size: 1em;
-	margin-top: 0;
-	margin-bottom: 1em;
-}
-
-h3 {
-	font-size: 1.5em; 
-}
-
-footer {
-	display: none;
-}
-
-.marker-window a:hover {
-	color: orange;
-	text-decoration: underline;
-}
-
-#about h1 {
-	margin-bottom: 0.7em;
-}
-
-
-
-#logo {
-	
-	width: 40px;
-	height: auto;
-	padding-top: 10px;
-	padding-bottom: 5px;
-}
-
 #error {
 	display: block;
 	background: red;
@@ -171,11 +170,13 @@ footer {
 	font-size: 0.85em;
 }
 
-#about {
-	width: 70%;
-	margin: auto;
-	padding-top: 140px;
+/* Other */
+
+footer {
+	display: none;
 }
+
+/* ==== Classes ==== */
 
 .nav-bar {
 	position: absolute;
@@ -209,24 +210,17 @@ footer {
 	overflow: hidden;
 }
 
-h2,
-#error {
-	text-align: center;
-	
+/* === About page === */
+
+#about {
+	width: 70%;
+	margin: auto;
+	padding-top: 140px;
 }
 
-.marker-window .heading {
-	font-weight: bold;
-	color: blue;
+#about h1 {
+	margin-bottom: 0.7em;
 }
-
-.icon {
-	display: inline;
-	padding-left: 4px;
-	width: 14px;
-	height: 14px;
-}
-
 
 /*==== Media Queries ====*/ 
 
@@ -266,6 +260,8 @@ h2,
 		height: 550px;
 	}
 }
+
+
 
 @media (min-width: 721px) {
 	.nav-bar ul {
@@ -377,10 +373,32 @@ h2,
 }
 
 @media (min-width: 850px) {
+
+	li {
+		font-size: 1.5em;
+	}
+
+	h1 {
+		font-size: 2em;
+		text-align: left;
+	}
+
+	h2 {
+		font-size: 1.5em;
+	}
+	
+	#about * {
+		display: block;
+		text-align: center;
+	}
 	
 	#map {
 		height: 700px;
 		width: 650px;
+	}
+	
+	.menu {
+		width: 550px;
 	}
 	
 	.sub_county {
@@ -393,7 +411,7 @@ h2,
 	
 	.marker-window .sub_county,
 	.marker-window .sub_post {
-		display: block; /*show extra details */
+		display: block; 
 		margin-top: 0px;
 	}
 	
@@ -417,23 +435,6 @@ h2,
 		font-size: 1em;
 		margin-top: 0.75em;
 		margin-bottom: 1em;
-	}
-
-	li {
-		font-size: 1.5em;
-	}
-
-	h1 {
-		font-size: 2em;
-		text-align: left;
-	}
-
-	h2 {
-		font-size: 1.5em;
-	}
-
-	.menu {
-		width: 550px;
 	}
 
 }
