@@ -1,58 +1,81 @@
+// === Selectors ====
 
-
-// Map Function
 var button = document.querySelector('button');
-var container = document.querySelector('.container')
-var errorMessage = document.getElementById('error')
+var container = document.querySelector('.container');
+var errorMessage = document.getElementById('error');
+
+// === Event Listeners ===
 
 button.onclick = function () {
 	getPostcode()
 }
 
+// === Functions ====
+
+function hideError() {
+	errorMessage.style.visibility = 'hidden';
+}
+
+function showError() {
+	errorMessage.style.visibility = 'visible';
+}
+
+function createMarkerContent(castle) {
+	let contentString = 
+	    `<div class="marker-window"><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` +
+	// div class for media queries
+        `<h4 class="sub_county"><i>${castle.county}</i></h4>` + 
+        `<img src='images/thumbs/${castle.img}'>` +
+        `<h4 class="sub_built">Built: <p>${castle.built}</p></h4>` +
+        `<h4 class="sub_status">Status: <p>${castle.status}</p></h4>` +
+        `<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>` +
+        `<h4 class="more-info"><a target="_blank" href="${castle.website}">Visit Website</a></h4>
+			</div>` 
+  return contentString;
+}
 
 function getPostcode() {
-	postcode = document.getElementById('postcode').value;
-	pcode = "https://api.postcodes.io/postcodes/" + postcode
-
+	var postcode = document.getElementById('postcode').value;
+	var pcode = "https://api.postcodes.io/postcodes/" + postcode
+	
+	//Validate input
 	if (postcode === "") {
-		errorMessage.style.visibility = 'visible';
-		errorMessage.delay(3000).style.visibility = 'hidden';
+		showError();
+		errorMessage.textContent = "Please enter a valid UK postcode";
 	} else {
-	
-	
-
-	let request = new XMLHttpRequest();
-	request.open('GET', pcode)
-	request.onload = function () {
-		var results = JSON.parse(request.responseText)
-		if (request.status === 200) {
-			latitude = results.result.latitude;
-			longitude = results.result.longitude;	
-			updateMap(latitude,longitude) //updates map position to postcode
-			errorMessage.style.visibility = 'hidden';
-		} else if (request.status === 404){
-			
-			errorMessage.style.visibility = 'visible';
-			errorMessage.textContent = `${postcode} is not a valid UK postcode. Please try again.`
-			
-			
-		} else {
-				
-			errorMessage.style.visibility = 'visible';
-			errorMessage.textContent = 'Error. Please try again.'
+		// AJAX request
 		
+		let request = new XMLHttpRequest();
+		request.open('GET', pcode)
+		request.onload = function () {
+			var results = JSON.parse(request.responseText);
+			
+			//Success
+			if (request.status === 200) {
+				var latitude = results.result.latitude;
+				var longitude = results.result.longitude;	
+				updateMap(latitude,longitude) //updates map position to postcode
+				hideError();
+				
+			//Invalid postcode	
+			} else if (request.status === 404){
+				showError();
+				errorMessage.textContent = `${postcode} is not a valid UK postcode. Please try again.`;
+				
+			//Other errors
+			} else {
+				showError();
+				errorMessage.textContent = 'Error. Please try again.';
+			}
+		} // onload end
+		
+		request.send();
 		}
-	}
-	
-	request.send();
-	}
-	
 }		
 
-
-
-
-function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add default coordinate values, or pass in updated coordinates
+function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // default values for initial load
+	
+	// === Map Object ===
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: latitude, lng: longitude},
 		zoom: zoomValue,
@@ -63,84 +86,50 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // add defa
 				{stylers: [
 					{hue:"#00ff6f"},
 					{saturation: -50}
-          
 				]}
 			]
-		
-	})
+	})	
 	
+	// === Markers ===
 	
-	
-	
-	
-	
+	//Icon
 	var image = {
 		url: 'images/icon.png',
 		size: new google.maps.Size(70, 70)
 	}
 	
-		//create marker for each castle
+	//Create marker and infoWindow for each castle
 	for (var i=0; i<castles.length; i+=1) {
-		let castle = castles[i]
-    
-    // create html for marker info
-		let contentString = 
-	
-      `<div class="marker-window"><h3 class="heading"><a href="${castle.website}" target="_blank">${castle.name}</a></h3>` +
-	// div class for media queries
-        `<h4 class="sub_county"><i>${castle.county}</i></h4>` + 
-        `<img src='images/thumbs/${castle.img}'>` +
-        `<h4 class="sub_built">Built: <p>${castle.built}</p></h4>` +
-        `<h4 class="sub_status">Status: <p>${castle.status}</p></h4>` +
-        `<h4 class="sub_post">Postcode: <p>${castle.postcode}</p></h4>` +
-        `<h4 class="more-info"><a target="_blank" href="${castle.website}">Visit Website</a></h4></div>` 
-        
-    
-		let marker = new google.maps.Marker({   // let is the magic word here - don't understand it fully, but because it only had block scope, the event listener below works for each iteration, and doesn't just take the final i value
-		position: {lat: castle.pos[0], lng: castle.pos[1]},
-		map: map,
-		icon: image,
-    content: contentString, 
-		
+		//Marker
+		let castle = castles[i];    
+		var marker = new google.maps.Marker({  
+			position: {lat: castle.pos[0], lng: castle.pos[1]},
+			map: map,
+			icon: image,
+			content: createMarkerContent(castle) 
 	  });
 		
-    // create info window - - use of var VITAL here, to ensure only one infowindow open at a time    
+    //infoWindow - - use of var VITAL here, to ensure only one infowindow open at a time    
 		var infowindow = new google.maps.InfoWindow({
-			content: contentString
+			content: createMarkerContent(castle) 
 	})
-		
-    
+		//Marker click event
     google.maps.event.addListener(marker, 'click', function(){
       infowindow.setContent(this.content); 
-      infowindow.open(map,this);})
-        
-    
-    
-		
-	  
-		
+      infowindow.open(map,this);})		
 	}
-	
-	
-	
 }
 
 function updateMap(longitude, latitude) {
 	initMap(longitude, latitude, 9) // updates zoom
 }
 
-//scrap postcodes, use googles place api, 
 
-//make tabs, search by city, search by postcode, search by castle, with autocomplete
 
-// append to dom card for each shelter within x 5miles, chosen from drop dwon menubar
-// need to add all shelters to list - 
+
+
 
 // or change or to something else useful, like local wildlife spots, nature things, see tourist websites something that isn't on googlemaps easily
-
-// add postcode validation, add if statement to whether castle has website
-
-// have media query at medium size to place map on left, with info box on right?
 
 // have more>> button (next to county?), that appends div to the right of window, with short description
 
