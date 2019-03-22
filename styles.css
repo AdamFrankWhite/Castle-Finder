@@ -38,6 +38,7 @@ img {
 
 .marker-window a {
 	color: blue;
+	font-weight: bold;
 }
 
 .marker-window a:hover {
@@ -194,7 +195,7 @@ footer {
 
 .menu {
 	width: 300px;
-	height: 100px;
+	height: 150px;
 	font-size: 0.85em;
 	margin: auto;
 	border: lightblue 4px solid;
@@ -205,7 +206,7 @@ footer {
 
 .container {
 	margin: auto;
-	margin-bottom: 1em;
+	/* margin-bottom: 1em; */
 	width: 220px;
 	overflow: hidden;
 }
@@ -232,6 +233,10 @@ footer {
 		justify-content: space-around;
 	}
 	
+	.menu {
+		height: 130px;
+	}
+		
 	.nav-bar #logo {
 		order: 0;
 		width: 30px;
@@ -261,8 +266,6 @@ footer {
 	}
 }
 
-
-
 @media (min-width: 721px) {
 	.nav-bar ul {
 		border: none;
@@ -280,6 +283,13 @@ footer {
 		line-height: 95px;
 	}
 	
+	.container {
+		width: 270px;
+	}
+	
+	#postcode {
+		width: 190px;
+	}
 	#logo {
 		float: left;
 		padding: 20px 30px;
@@ -339,8 +349,9 @@ footer {
 	}
 	
 	.menu {
+		font-size: 1em;
 		width: 400px;
-		height: 120px;
+		height: 165px;
 		margin-bottom: 40px;
 	}
 	
