@@ -171,11 +171,6 @@ button {
 	font-size: 0.85em;
 }
 
-/* Other */
-
-footer {
-	display: none;
-}
 
 /* ==== Classes ==== */
 
@@ -272,11 +267,18 @@ footer {
 	}
 
 	footer {
-		display: block;
+		display: flex;
 		width: 100%;
 		background-color: darkgreen;
-		height: 100px;
+		height: 80px;
 		margin-top: 75px;
+		align-items: center;
+	}
+	
+	footer p {
+		text-align: center;
+		color: white;
+		margin: auto;
 	}
 
 	.nav-bar {
