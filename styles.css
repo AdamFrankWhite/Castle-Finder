@@ -112,6 +112,7 @@ h1 {
 	vertical-align: center;
 	font-size: 1.5em;
 	color: darkgreen;
+	text-shadow: 2px 2px 2px slategray;
 }
 
 h2 {
