@@ -163,12 +163,15 @@ p {
 
 /* Menu */
 
+input {
+	text-transform: uppercase;
+}
+
 input:focus{
 	border: green solid 3px;
 }
 
 button {
-	/* float: right; */
 	width: 80px;
 	display: inline-block;
   border: none;
@@ -184,7 +187,7 @@ button {
   text-align: center;
   -webkit-appearance: none;
   -moz-appearance: none;
-	flex-basis: 30%;
+	/* flex-basis: 30%; */
 }
 
 input, 
@@ -203,9 +206,6 @@ button {
 	font-size: 0.85em;
 }
 
-#postcode {
-	flex-basis: 70%;
-}
 
 /* ==== Classes ==== */
 
@@ -228,7 +228,7 @@ button {
 	flex-direction: column;
 	justify-content: center;
 	width: 300px;
-	height: 150px;
+	height: 135px;
 	font-size: 0.85em;
 	margin: auto;
 	border: darkgreen 1px solid;
@@ -241,10 +241,8 @@ button {
 
 .container {
 	margin: 0 auto;
-	width: 65%;
-	min-width: 
+	width: 80%;
 	max-height: 100px;
-	/* overflow: hidden; */
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
@@ -272,10 +270,6 @@ button {
 		align-items: center;
 		justify-content: space-around;
 	}
-	
-	.menu {
-		height: 160px;
-	}
 		
 	.nav-bar #logo {
 		order: 0;
@@ -297,6 +291,10 @@ button {
 	li:nth-of-type(1) {
 		padding-left: 0.4em;
 	}
+	
+	#postcode {
+		width: 120px;
+	}
 }
 
 @media (min-width: 521px) {
@@ -304,6 +302,7 @@ button {
 		width: 400px;
 		height: 550px;
 	}
+	
 }
 
 @media (min-width: 721px) {
@@ -313,18 +312,10 @@ button {
 		font-family: 'IM Fell English SC', serif;
 	}
 
-
 	.nav-bar {
 		line-height: 95px;
 	}
 	
-	/* .container { */
-		/* width: 270px; */
-	/* } */
-	
-	/* #postcode { */
-		/* width: 190px; */
-	/* } */
 	#logo {
 		float: left;
 		padding: 20px 30px;
@@ -335,6 +326,19 @@ button {
 
 	.wrapper {
 		padding-top: 140px;
+	}
+	
+	.container {
+		width: 70%;
+	}
+	input {
+		font-size: 1.25em;
+		font-weight: bold;
+		font-family: sans-serif;
+	}
+	input,
+	button {
+		height: 50px;
 	}
 	
 	#map .icon {
