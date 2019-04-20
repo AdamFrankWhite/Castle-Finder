@@ -3,6 +3,7 @@
 var button = document.querySelector('button');
 var container = document.querySelector('.container');
 var errorMessage = document.getElementById('error');
+var searchField = document.getElementById('postcode');
 
 // === Event Listeners ===
 
@@ -102,7 +103,7 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // default 
 	for (var i=0; i<castles.length; i+=1) {
 		//Marker
 		let castle = castles[i];    
-		var marker = new google.maps.Marker({  
+		let marker = new google.maps.Marker({  
 			position: {lat: castle.pos[0], lng: castle.pos[1]},
 			map: map,
 			icon: image,
@@ -110,7 +111,7 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // default 
 	  });
 		
     //infoWindow - - use of var VITAL here, to ensure only one infowindow open at a time    
-		var infowindow = new google.maps.InfoWindow({
+		infowindow = new google.maps.InfoWindow({
 			content: createMarkerContent(castle) 
 	})
 		//Marker click event
@@ -126,7 +127,50 @@ function updateMap(longitude, latitude) {
 
 
 
+// Type ahead
 
+function findMatches(termToMatch, castles) {
+	return castles.filter(castle => {
+		const regex = new RegExp(termToMatch, 'gi')
+		return castle.name.match(regex) || castle.county.match(regex) || castle.postcode.match(regex)
+		})
+}
+
+function clearSearch(){
+	suggestions.innerHTML = ""; 
+}
+
+function updateSearchValue(castle) {
+	postcode.value = castle;
+
+}
+
+// let marker = new google.maps.Marker({  
+		// position: {lat: castle.pos[0], lng: castle.pos[1]},
+		// map: map,
+		// icon: image,
+		// content: createMarkerContent(castle) 
+	// }) 
+  // infowindow.open(map,marker);
+
+function displayMatches() {
+	const matchesArray = findMatches(this.value, castles);
+	const html = matchesArray.map(castle => {
+		// let castleID = castle.name.toLowerCase().slice(0,4);
+		let latitude = castle.pos[0]
+		let longitude = castle.pos[1]
+		return `
+		<li>
+	<span onclick="updateMap(${latitude}, ${longitude}); updateSearchValue('${castle.name}'); clearSearch();">${castle.name}, ${castle.county}, ${castle.postcode}</span>
+		</li>
+	`}).join(""); // .join vital to avoid comma bug - happens since using innerHTML to assign an array - this way the mapped output is changed to string before inserting as HTML
+	suggestions.innerHTML = html; // add click event to focus on castle
+}
+
+const searchInput = document.querySelector('#postcode');
+const suggestions = document.querySelector('.suggestions');
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
 
 
 // or change or to something else useful, like local wildlife spots, nature things, see tourist websites something that isn't on googlemaps easily
