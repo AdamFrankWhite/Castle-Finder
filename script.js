@@ -4,7 +4,7 @@ var button = document.querySelector('button');
 var container = document.querySelector('.container');
 var errorMessage = document.getElementById('error');
 var searchField = document.getElementById('postcode');
-
+const markers = [];
 // === Event Listeners ===
 
 button.onclick = function () {
@@ -109,6 +109,7 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // default 
 			icon: image,
 			content: createMarkerContent(castle) 
 	  });
+		markers.push(marker)
 		
     //infoWindow - - use of var VITAL here, to ensure only one infowindow open at a time    
 		infowindow = new google.maps.InfoWindow({
@@ -145,13 +146,10 @@ function updateSearchValue(castle) {
 
 }
 
-// let marker = new google.maps.Marker({  
-		// position: {lat: castle.pos[0], lng: castle.pos[1]},
-		// map: map,
-		// icon: image,
-		// content: createMarkerContent(castle) 
-	// }) 
-  // infowindow.open(map,marker);
+function openMarker(index) {
+	infoWindow.open(map, markers[index]);
+}
+
 
 function displayMatches() {
 	const matchesArray = findMatches(this.value, castles);
@@ -159,18 +157,23 @@ function displayMatches() {
 		// let castleID = castle.name.toLowerCase().slice(0,4);
 		let latitude = castle.pos[0]
 		let longitude = castle.pos[1]
+		let index = castles.indexOf(castle)
 		return `
 		<li>
-	<span onclick="updateMap(${latitude}, ${longitude}); updateSearchValue('${castle.name}'); clearSearch();">${castle.name}, ${castle.county}, ${castle.postcode}</span>
+	<span onclick="updateMap(${latitude}, ${longitude}); openMarker(${index}); updateSearchValue('${castle.name}'); clearSearch();">${castle.name}, ${castle.county}, ${castle.postcode}</span>
 		</li>
 	`}).join(""); // .join vital to avoid comma bug - happens since using innerHTML to assign an array - this way the mapped output is changed to string before inserting as HTML
 	suggestions.innerHTML = html; // add click event to focus on castle
+	// to do - move click events to js function, including one passing castle object, to then create marker 
 }
 
 const searchInput = document.querySelector('#postcode');
 const suggestions = document.querySelector('.suggestions');
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
+
+
+
 
 
 // or change or to something else useful, like local wildlife spots, nature things, see tourist websites something that isn't on googlemaps easily
