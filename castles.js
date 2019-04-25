@@ -18,7 +18,8 @@ var castles = [
 		county:'Berkshire', 
 		status: 'Royal Residence', 
 		postcode: 'SL4 1QF', 
-		website: 'https://www.rct.uk/visit/windsorcastle'},
+		website: 'https://www.rct.uk/visit/windsorcastle'
+	},
 		
 	{
 		name: 'Boarstall Tower', 
@@ -201,11 +202,11 @@ var castles = [
 		name: 'Brancepeth Castle', 
 		img: 'bran.jpg', 
 		pos: [54.73333, -1.65], 
-		built: '14th century', 
+		built: '12th century', 
 		county: 'County Durham', 
-		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		status: 'Grade 1 Listed Building', 
+		postcode: 'DH7 8DF', 
+		website: 'http://www.brancepethcastle.org.uk/'
 	},
 	
 	{
@@ -213,9 +214,10 @@ var castles = [
 		img: 'durh.jpg', 
 		pos: [54.774722, -1.576111], 
 		built: 'c. 1072', 
-		county: 'County Durham', status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		county: 'County Durham', 
+		status: 'Open to public', 
+		postcode: 'DH1 3RW', 
+		website: 'https://www.dur.ac.uk/durham.castle/contact/'
 	},
 	
 	{
@@ -225,8 +227,8 @@ var castles = [
 		built: 'c. 1828', 
 		county: 'County Durham', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'DH3 4PT', 
+		website: 'https://www.lambtonestates.com/lambton-castle/'
 	},
 	
 	{
@@ -236,8 +238,8 @@ var castles = [
 		built: '14th century', 
 		county: 'County Durham', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'DH3 4NX', 
+		website: 'https://www.lumleycastle.com/'
 	},
 	
 	{
@@ -247,8 +249,8 @@ var castles = [
 		built: '14th century', 
 		county: 'County Durham', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'DL2 3AH', 
+		website: 'https://www.raby.co.uk/raby-castle/'
 	},
 	
 	{
@@ -257,9 +259,9 @@ var castles = [
 		pos: [54.565, -1.639], 
 		built: 'c. 1600', 
 		county: 'County Durham', 
-		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		status: 'Hotel', 
+		postcode: 'DL2 2LY', 
+		website: 'https://walworthcastle.co.uk/'
 	},
 	
 	{
@@ -269,8 +271,8 @@ var castles = [
 		built: 'c. 1808', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'PL26 6LY', 
+		website: 'https://www.visitcornwall.com/things-to-do/attractions/south-coast/st-austell/caerhays-castle-and-gardens'
 	},
 	
 	{
@@ -280,8 +282,8 @@ var castles = [
 		built: '14th century', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'TR16 6SL', 
+		website: 'https://en.wikipedia.org/wiki/Carn_Brea_Castle'
 	},
 	
 	{
@@ -291,8 +293,8 @@ var castles = [
 		built: 'c. 1642', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE',
-		website: 'url'
+		postcode: 'PL12 4QZ',
+		website: 'http://www.castlesfortsbattles.co.uk/south_west/ince_castle_cornwall.html'
 	},
 	
 	{
@@ -302,8 +304,8 @@ var castles = [
 		built: '11th century', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'PL15 7DR', 
+		website: 'https://www.english-heritage.org.uk/visit/places/launceston-castle/'
 	},
 	
 	{
@@ -313,8 +315,8 @@ var castles = [
 		built: 'c. 1542', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'TR11 4LP', 
+		website: 'https://www.english-heritage.org.uk/visit/places/pendennis-castle/'
 	},
 	
 	{
@@ -324,8 +326,8 @@ var castles = [
 		built: 'c. 1100', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'PL22 0EE', 
+		website: 'https://www.english-heritage.org.uk/visit/places/restormel-castle/'
 	},
 	
 	{
@@ -335,8 +337,8 @@ var castles = [
 		built: 'c. 1540', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'PL23 1JH', 
+		website: 'https://www.english-heritage.org.uk/visit/places/st-catherines-castle/'
 	},
 	
 	{
@@ -346,8 +348,8 @@ var castles = [
 		built: 'c. 1542', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'TR2 5DE', 
+		website: 'https://www.english-heritage.org.uk/visit/places/st-mawes-castle/'
 	},
 	
 	{
@@ -357,8 +359,8 @@ var castles = [
 		built: '13th century', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'PL34 0HE', 
+		website: 'https://www.english-heritage.org.uk/visit/places/tintagel-castle/'
 	},
 	
 	{
@@ -368,8 +370,8 @@ var castles = [
 		built: '12th century', 
 		county: 'Cornwall', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'PL12 4QW', 
+		website: 'https://en.wikipedia.org/wiki/Trematon_Castle'
 	},
 	
 	{
@@ -379,8 +381,8 @@ var castles = [
 		built: '12th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA16 6XH', 
+		website: 'http://www.applebycastle.co.uk/AC/'
 	},
 	
 	{
@@ -390,8 +392,8 @@ var castles = [
 		built: '15th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA4 9PD', 
+		website: 'https://en.wikipedia.org/wiki/Armathwaite_Castle'
 	},
 	
 	{
@@ -401,8 +403,8 @@ var castles = [
 		built: '15th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'LA5 0SN', 
+		website: 'https://www.visitcumbria.com/sl/arnside-tower/'
 	},
 	
 	{
@@ -412,8 +414,8 @@ var castles = [
 		built: 'c. 1290', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA8 2BD', 
+		website: 'https://en.wikipedia.org/wiki/Askerton_Castle'
 	},
 	
 	{
@@ -423,8 +425,8 @@ var castles = [
 		built: 'c. 1092', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA10 2AA', 
+		website: 'https://www.english-heritage.org.uk/visit/places/brough-castle/'
 	},
 	
 	{
@@ -434,8 +436,8 @@ var castles = [
 		built: '13th century', 
 		county: 'Cumbria',
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA10 2AA', 
+		website: 'https://www.english-heritage.org.uk/visit/places/brougham-castle/'
 	},
 	
 	{
@@ -445,8 +447,8 @@ var castles = [
 		built: '12th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA3 8UR', 
+		website: 'https://www.english-heritage.org.uk/visit/places/carlisle-castle/'
 	},
 	
 	{
@@ -456,8 +458,8 @@ var castles = [
 		built: 'c. 1134', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA13 9EY', 
+		website: 'http://www.ecastles.co.uk/cockermouth.html'
 	},
 	
 	{
@@ -467,8 +469,8 @@ var castles = [
 		built: 'mid-14th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA11 0HJ', 
+		website: 'https://en.wikipedia.org/wiki/Dacre_Castle'
 	},
 	
 	{
@@ -478,8 +480,8 @@ var castles = [
 		built: '12th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'LA9 7DJ', 
+		website: 'https://www.visitcumbria.com/sl/kendal-castle/'
 	},
 	
 	{
@@ -489,8 +491,8 @@ var castles = [
 		built: '13th century', 
 		county: 'Cumbria',
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA18 1RD', 
+		website: 'https://www.muncaster.co.uk/'
 	},
 	
 	{
@@ -500,8 +502,8 @@ var castles = [
 		built: '13th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: ' CA8 2HF', 
+		website: 'http://www.naworth.co.uk/'
 	},
 	
 	{
@@ -511,8 +513,8 @@ var castles = [
 		built: '12th century', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'CA17 4JT', 
+		website: 'https://www.visitcumbria.com/evnp/pendragon-castle/'
 	},
 	
 	{
@@ -522,8 +524,8 @@ var castles = [
 		built: '15th century', 
 		county: 'Cumbria', 
 		status: 'Ruins',
-		postcode: 'RG14 2LE',
-		website: 'url'
+		postcode: 'CA11 7EA',
+		website: 'https://www.english-heritage.org.uk/visit/places/penrith-castle/'
 	},
 	
 	{
@@ -533,8 +535,8 @@ var castles = [
 		built: 'c. 1840', 
 		county: 'Cumbria', 
 		status: 'Ruins', 
-		postcode: 'RG14 2LE', 
-		website: 'url'
+		postcode: 'LA22 0JA', 
+		website: 'https://www.nationaltrust.org.uk/wray-castle'
 	},
 	
 	
