@@ -109,16 +109,19 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // default 
 			icon: image,
 			content: createMarkerContent(castle) 
 	  });
-		markers.push(marker)
+		markers.push(marker);
+	
 		
     //infoWindow - - use of var VITAL here, to ensure only one infowindow open at a time    
-		infowindow = new google.maps.InfoWindow({
+		var infowindow = new google.maps.InfoWindow({
 			content: createMarkerContent(castle) 
 	})
-		//Marker click event
+		
+		// Marker click event
     google.maps.event.addListener(marker, 'click', function(){
-      infowindow.setContent(this.content); 
-      infowindow.open(map,this);})		
+      infowindow.setContent(this.content);
+      infowindow.open(map,this);})
+						
 	}
 }
 
@@ -147,7 +150,23 @@ function updateSearchValue(castle) {
 }
 
 function openMarker(index) {
-	infoWindow.open(map, markers[index]);
+	var image = {
+		url: 'images/icon.png',
+		size: new google.maps.Size(70, 70)
+	}
+	let castle = castles[index];    
+	let marker = markers[index]
+	console.log(castle)
+  //infoWindow - - use of var VITAL here, to ensure only one infowindow open at a time    
+	let infowindow = new google.maps.InfoWindow({
+		content: createMarkerContent(castle) 
+	})
+		//Marker click event
+	infowindow.setContent(this.content);
+  infowindow.open(map,marker);
+	console.log("boo")
+		 
+  
 }
 
 
@@ -160,7 +179,7 @@ function displayMatches() {
 		let index = castles.indexOf(castle)
 		return `
 		<li>
-	<span onclick="updateMap(${latitude}, ${longitude}); openMarker(${index}); updateSearchValue('${castle.name}'); clearSearch();">${castle.name}, ${castle.county}, ${castle.postcode}</span>
+	<span onclick="updateMap(${latitude}, ${longitude}); updateSearchValue('${castle.name}'); clearSearch(); openMarker(${index})">${castle.name}, ${castle.county}, ${castle.postcode}</span>
 		</li>
 	`}).join(""); // .join vital to avoid comma bug - happens since using innerHTML to assign an array - this way the mapped output is changed to string before inserting as HTML
 	suggestions.innerHTML = html; // add click event to focus on castle
