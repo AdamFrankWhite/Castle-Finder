@@ -4,6 +4,7 @@ var button = document.querySelector('button');
 var container = document.querySelector('.container');
 var errorMessage = document.getElementById('error');
 var searchField = document.getElementById('postcode');
+var nearestDiv = document.getElementById('nearest');
 const markers = [];
 // === Event Listeners ===
 
@@ -57,6 +58,7 @@ function getPostcode() {
 				var longitude = results.result.longitude;	
 				updateMap(latitude,longitude) //updates map position to postcode
 				hideError();
+				showNearest(latitude, longitude);
 				
 			//Invalid postcode	
 			} else if (request.status === 404){
@@ -129,7 +131,26 @@ function updateMap(longitude, latitude) {
 	initMap(longitude, latitude, 9) // updates zoom
 }
 
-
+function showNearest(latitude, longitude){
+	let castlesArray = [...castles]
+	castlesArray.sort((a,b) => Math.sqrt(((latitude - a.pos[0])**2) + ((longitude - a.pos[1])**2)) < Math.sqrt(((latitude - b.pos[0])**2) + ((longitude - b.pos[1])**2)) ? -1 : +1)
+	// uses pythagorus to find distances, if a less than b, move left in arr
+	//console.log(castlesArray);
+	let outputHTML = ""
+	for (let i=0; i<5; i++) {
+		let distance = (Math.sqrt(((latitude - castlesArray[i].pos[0])**2) + ((longitude - castlesArray[i].pos[1])**2))*69).toFixed(1) // approx 69 miles per degree of lat/long
+	
+		outputHTML += `<div class="castleItem">
+										<h3>${castlesArray[i]["name"]}</h3>
+										<h3>${castlesArray[i]["built"]}</h3>
+										<img class="thumb" src="images/thumbs/${castlesArray[i]["img"]}">
+										<h3>Distance: ${distance} miles</h3>
+									</div>
+									`
+	}
+	console.log(outputHTML)
+	nearestDiv.innerHTML = outputHTML
+}
 
 // Type ahead
 
@@ -173,7 +194,6 @@ function openMarker(index) {
 function displayMatches() {
 	const matchesArray = findMatches(this.value, castles);
 	const html = matchesArray.map(castle => {
-		// let castleID = castle.name.toLowerCase().slice(0,4);
 		let latitude = castle.pos[0]
 		let longitude = castle.pos[1]
 		let index = castles.indexOf(castle)
