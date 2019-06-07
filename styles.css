@@ -6,17 +6,18 @@
 
 :root {
 	--menuWidth: 370px;
-}	
+}
 
 /*==== Map Styling ====*/
 
 #map {
-	margin: auto;
-	height: 350px;
-	width: 90%;
+	height: 400px;
+	width: 100%;
 	border: 2px black solid;
-	border-radius: 20px;
-	box-shadow: 3px 3px 3px black;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px lightgray;
+	display: block;
+	margin: 1em auto;
 }
 
 img {
@@ -59,18 +60,27 @@ img {
 	width: 160px;
 	height: fit-content;
 	height: 250px;
-	height: fit-content;	
+	height: fit-content;
 }
 
 .marker-window .sub_county,
 .marker-window .sub_status,
 .marker-window .sub_post {
 	display: none;
-	
+
 }
 
 .marker-window .sub_county {
 	font-style: italic;
+}
+
+.nearbyHead {
+	font-size: 1.25em;
+	background: darkgreen;
+	color: white;
+	font-weight: bold;
+	margin: 1em auto;
+	padding: 1em;
 }
 
 /*==== Main Styles ====*/
@@ -83,7 +93,7 @@ body {
 /* Nav-bar */
 
 #logo {
-	
+
 	width: 40px;
 	height: auto;
 	padding-top: 10px;
@@ -98,7 +108,7 @@ ul {
 }
 
 li {
-	display: inline-block; 
+	display: inline-block;
 	float: left;
 	padding-right: 0.4em;
 }
@@ -108,11 +118,11 @@ a {
     text-decoration: none;
 }
 
-a:hover 
+a:hover
 {
-     color:orange; 
-     text-decoration:none; 
-     cursor:pointer;  
+     color:orange;
+     text-decoration:none;
+     cursor:pointer;
 }
 
 footer {
@@ -120,10 +130,10 @@ footer {
 		width: 100%;
 		background-color: darkgreen;
 		height: 60px;
-		margin-top: 75px;
+		margin-top: 25px;
 		align-items: center;
 	}
-	
+
 footer p {
 	text-align: center;
 	color: white;
@@ -152,11 +162,11 @@ h2 {
 h2,
 #error {
 	text-align: center;
-	
+
 }
 
 h3 {
-	font-size: 1.5em; 
+	font-size: 1.5em;
 }
 
 p {
@@ -196,7 +206,7 @@ button {
 	/* flex-basis: 30%; */
 }
 
-input, 
+input,
 button {
 	padding: 5px;
 }
@@ -227,27 +237,28 @@ button {
 
 .wrapper {
 	padding-top: 110px;
+	margin: auto;
 }
+
 
 .menu {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	width: 300px;
+	width: 50%;
 	height: 135px;
 	font-size: 0.85em;
-	margin: auto;
 	border: darkgreen 1px solid;
-	border-radius: 10px;
+	border-radius: 10px 10px 0 0;
 	padding: 10px;
-	margin-bottom: 15px;
-	box-shadow: 2px 2px 2px black;
+	margin: 0 auto;
 	background-color: #85DC84;
 }
 
 .container {
 	margin: 0 auto;
-	width: 80%;
+	width: 90%;
 	max-height: 100px;
 	display: flex;
 	flex-wrap: wrap;
@@ -256,14 +267,43 @@ button {
 }
 
 #nearest .thumb {
-	width: 340px;
+	width: 100px;
 	height: auto;
+	margin: 0.3em;
+	border-radius: 10px;
+
+}
+ #nearest {
+	 border: 1px solid darkgreen;
+	 border-top: none;
+	 border-radius: 0 0 5px;
+ }
+
+ #nearest h5 {
+	 font-size: 1em;
+	 display: block;
+ }
+.castleItem {
+	width: 70%;
+	margin: auto;
+	display: flex;
+	margin-bottom: 0.75em;
+	justify-content: center;
+	border: 1px gray solid;
+	border-radius: 5px;
 }
 
-.castleItem {
-	width: 100%;
+.castleItem:hover {
+	cursor: pointer;
+	background: orange;
+	transition: background 0.4s;
+}
+
+.castleInfo {
+	margin-left: 1em;
 	display: flex;
-	border: 2px solid black;
+	flex-direction: column;
+	justify-content: center;
 }
 
 /* === About page === */
@@ -278,7 +318,7 @@ button {
 	margin-bottom: 0.7em;
 }
 
-/*==== Media Queries ====*/ 
+/*==== Media Queries ====*/
 
 @media (max-width: 720px) {
 	.nav-bar {
@@ -287,39 +327,31 @@ button {
 		align-items: center;
 		justify-content: space-around;
 	}
-		
+
 	.nav-bar #logo {
 		order: 0;
 		width: 30px;
 	}
-	
+
 	.nav-bar h1 {
 		order: 1;
 		padding-bottom: 0.25em;
 	}
-		
+
 	.nav-bar ul {
 		order: 2;
 		padding-top: 0.5em;
 		padding-bottom: 1em;
 		border-top: 1px solid darkgreen;
 	}
-	
+
 	li:nth-of-type(1) {
 		padding-left: 0.4em;
 	}
-	
-	#postcode {
-		width: 120px;
-	}
-}
 
-@media (min-width: 521px) {
-	#map {
-		width: 400px;
-		height: 550px;
+	#postcode {
+		width: 170px;
 	}
-	
 }
 
 @media (min-width: 721px) {
@@ -332,7 +364,7 @@ button {
 	.nav-bar {
 		line-height: 95px;
 	}
-	
+
 	#logo {
 		float: left;
 		padding: 20px 30px;
@@ -344,9 +376,9 @@ button {
 	.wrapper {
 		padding-top: 140px;
 	}
-	
+
 	.container {
-		width: 70%;
+		width: 90%;
 	}
 	input {
 		font-size: 1.25em;
@@ -357,36 +389,37 @@ button {
 	button {
 		height: 50px;
 	}
-	
+
 	#map .icon {
 		width: 70px;
 		height: auto;
 	}
-	
+
 	#map {
 		height: 600px;
-		width: 450px;
+		width: 80%;
+		margin: 2em auto;
 	}
-	
+
 	.sub_county {
 		margin-top: -5px;
 	}
-	
+
 	.marker-window .heading {
 		margin-bottom: 0px;
 	}
-	
+
 	.marker-window .sub_county,
 	.marker-window .sub_post {
 		display: block; /*show extra details */
 		margin-top: 0px;
 	}
-	
+
 	.marker-window {
 		width: 190px;
 		width: fit-content;
 		height: fit-content;
-	
+
 	}
 
 	.marker-window h3 {
@@ -403,14 +436,9 @@ button {
 		margin-top: 0.6em;
 		margin-bottom: 0.8em;
 	}
-	
-	.menu {
-		font-size: 1em;
-		width: 400px;
-		height: 190px;
-		margin-bottom: 40px;
-	}
-	
+
+
+
 	ul {
 		display: inline-block;
 		float: right;
@@ -435,11 +463,11 @@ button {
 
 	h2 {
 		font-size: 1.1em;
-	}	
+	}
 
 }
 
-@media (min-width: 850px) {
+@media (min-width: 1050px) {
 
 	li {
 		font-size: 1.5em;
@@ -453,40 +481,59 @@ button {
 	h2 {
 		font-size: 1.5em;
 	}
-	
+
 	#about * {
 		display: block;
 		text-align: center;
 	}
-	
+
 	#map {
-		height: 700px;
-		width: 650px;
+		height: 800px;
+		width: 60%;
+		float: right;
+		margin-top: 0;
 	}
-	
+
+
 	.menu {
-		width: 550px;
+		float: left;
+		margin-left: 2%;
+		font-size: 1em;
+		width: 40%;
+		max-width: 500px;
+		height: 210px;
 	}
-	
+	.col-left {
+		float: left;
+		margin-left: 2%;
+		width: 40%;
+		max-width: 500px;
+		max-height: 700px;
+		box-shadow: 2px 2px 2px lightgray;
+	}
+
+	.nearbyHead {
+		margin-top: 0;
+	}
 	.sub_county {
 		margin-top: -5px;
 	}
-	
+
 	.marker-window .heading {
 		margin-bottom: 0px;
 	}
-	
+
 	.marker-window .sub_county,
 	.marker-window .sub_post {
-		display: block; 
+		display: block;
 		margin-top: 0px;
 	}
-	
+
 	.marker-window {
 		width: 210px;
 		width: fit-content;
 		height: fit-content;
-	
+
 	}
 
 	.marker-window h3 {
@@ -509,13 +556,14 @@ button {
 .suggestions {
   margin: 0;
   padding: 0;
-  position: relative;
+  /* position: relative; */
 	z-index: 1000;
+	margin-top: -20px;
   /*perspective: 20px;*/
 }
 
 .suggestions li {
-	width: var(--menuWidth);
+	width: 100%;
 	font-size: 1em;
   background: white;
   list-style: none;
