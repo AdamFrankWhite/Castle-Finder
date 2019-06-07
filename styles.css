@@ -255,6 +255,17 @@ button {
 	justify-content: center;
 }
 
+#nearest .thumb {
+	width: 340px;
+	height: auto;
+}
+
+.castleItem {
+	width: 100%;
+	display: flex;
+	border: 2px solid black;
+}
+
 /* === About page === */
 
 #about {
