@@ -137,7 +137,7 @@ function updateMap(longitude, latitude) {
 
 function showNearest(latitude, longitude){
 	let castlesArray = [...castles]
-	castlesArray.sort((a,b) => Math.sqrt(((latitude - a.pos[0])**2) + ((longitude - a.pos[1])**2)) < Math.sqrt(((latitude - b.pos[0])**2) + ((longitude - b.pos[1])**2)) ? -1 : +1)
+	castlesArray.sort((a,b) => Math.sqrt(((latitude - a.pos[0])**2) + ((longitude - a.pos[1])**2)) < Math.sqrt(((latitude - b.pos[0])**2) + ((longitude - b.pos[1])**2)) ? -1 : +1) // if distance of a is less than b, it appears before it
 	// uses pythagorus to find distances, if a less than b, move left in arr
 	//console.log(castlesArray);
 	let outputHTML = ""
