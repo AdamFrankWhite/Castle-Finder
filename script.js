@@ -132,7 +132,7 @@ function initMap(latitude=53.3933, longitude=-2.1266, zoomValue=6) { // default 
 }
 
 function updateMap(longitude, latitude) {
-	initMap(longitude, latitude, 9) // updates zoom
+	initMap(longitude, latitude, 10) // updates zoom
 }
 
 function showNearest(latitude, longitude){
@@ -161,7 +161,15 @@ function showNearest(latitude, longitude){
 	nearestDiv.innerHTML = "<h2 class='nearbyHead'>Nearby Castles</h2>" + outputHTML
 }
 
-// Type ahead
+// Type ahead feature
+
+function clearSearch(){
+	suggestions.innerHTML = "";
+}
+
+function updateSearchValue(castle) {
+	postcode.value = castle;
+}
 
 function findMatches(termToMatch, castles) {
 	return castles.filter(castle => {
@@ -170,14 +178,32 @@ function findMatches(termToMatch, castles) {
 		})
 }
 
-function clearSearch(){
-	suggestions.innerHTML = "";
+function displayMatches() {
+	const matchesArray = findMatches(this.value, castles);
+	const html = matchesArray.map(castle => {
+		let latitude = castle.pos[0]
+		let longitude = castle.pos[1]
+		let index = castles.indexOf(castle)
+		return `
+		<li>
+	<span onclick="updateMap(${latitude}, ${longitude}); showNearest(${latitude}, ${longitude}); updateSearchValue('${castle.name}'); clearSearch(); openMarker(${index}); hideError();">${castle.name}, ${castle.county}, ${castle.postcode}</span>
+		</li>
+	`}).join(""); // .join vital to avoid comma bug - happens since using innerHTML to assign an array - this way the mapped output is changed to string before inserting as HTML
+	suggestions.innerHTML = html; 
 }
 
-function updateSearchValue(castle) {
-	postcode.value = castle;
+// ===  Autocomplete search feature
 
-}
+const searchInput = document.querySelector('#postcode');
+const suggestions = document.querySelector('.suggestions');
+searchInput.addEventListener('change', displayMatches);
+searchInput.addEventListener('keyup', displayMatches);
+
+
+
+
+
+// To fix
 
 function openMarker(index) {
 	var image = {
@@ -203,28 +229,6 @@ function myClick(index) {
     google.maps.event.trigger(markers[index]);
 		console.log("bla")
   }
-
-function displayMatches() {
-	const matchesArray = findMatches(this.value, castles);
-	const html = matchesArray.map(castle => {
-		let latitude = castle.pos[0]
-		let longitude = castle.pos[1]
-		let index = castles.indexOf(castle)
-		return `
-		<li>
-	<span onclick="updateMap(${latitude}, ${longitude}); showNearest(${latitude}, ${longitude}); myClick(${index}); updateSearchValue('${castle.name}'); clearSearch(); openMarker(${index}); hideError();">${castle.name}, ${castle.county}, ${castle.postcode}</span>
-		</li>
-	`}).join(""); // .join vital to avoid comma bug - happens since using innerHTML to assign an array - this way the mapped output is changed to string before inserting as HTML
-	suggestions.innerHTML = html; // add click event to focus on castle
-	// to do - move click events to js function, including one passing castle object, to then create marker
-}
-
-const searchInput = document.querySelector('#postcode');
-const suggestions = document.querySelector('.suggestions');
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches);
-
-
 
 
 
