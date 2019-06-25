@@ -1,4 +1,4 @@
-var castles = [
+const castles = [
 	{
 		name: 'Donnington Castle', 
 		img: 'donn.jpg', 
